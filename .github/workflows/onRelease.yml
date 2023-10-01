@@ -1,0 +1,28 @@
+name: publish
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  npm-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node
+      # https://github.com/actions/setup-node/releases/tag/v3.8.1
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
+        with:
+          node-version: lts/*
+          cache: yarn
+      - name: Install dependencies
+        run: yarn install --network-timeout 600000
+      - name: Build
+        run: yarn build
+      - name: Install oclif CLI (used in post|pre pack scripts)
+        run: npm install --global oclif@^3
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

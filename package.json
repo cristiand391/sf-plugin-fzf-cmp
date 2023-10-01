@@ -1,0 +1,59 @@
+{
+  "name": "@cristiand391/sf-plugin-fzf-cmp",
+  "version": "0.0.0",
+  "description": "Fuzzy completion for the Salesforce CLI",
+  "author": {
+    "name": "Cristian Dominguez",
+    "url": "https://github.com/cristiand391"
+  },
+  "homepage": "https://github.com/cristiand391/sf-plugin-fzf-cmp",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": "cristiand391/sf-plugin-fzf-cmp",
+  "files": [
+    "/lib",
+    "/oclif.manifest.json"
+  ],
+  "dependencies": {
+    "@oclif/core": "^2.15.0",
+    "@salesforce/core": "^5.3.1",
+    "@salesforce/source-deploy-retrieve": "^9.7.19",
+    "chalk": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "oclif": {
+    "commands": "./lib/commands"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -p .",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write \"+(src)/**/*.+(ts|json)\"",
+    "postpack": "rm -f oclif.manifest.json",
+    "prepack": "yarn build && oclif manifest"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "bugs": "https://github.com/cristiand391/sf-plugin-fzf-cmp/issues",
+  "keywords": [
+    "force",
+    "salesforce",
+    "sfdx",
+    "salesforcedx",
+    "sfdx-plugin",
+    "sf-plugin",
+    "sf-autocomplete",
+    "sf"
+  ]
+}

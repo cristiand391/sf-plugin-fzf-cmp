@@ -1,0 +1,21 @@
+name: manual release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Conventional Changelog Action
+        id: changelog
+        # https://github.com/TriPSs/conventional-changelog-action/releases/tag/v4.1.1
+        uses: TriPSs/conventional-changelog-action@05fc06b05ff372d7a3890bfe625d42a0d97844de
+        with:
+          tag-prefix: ''
+      - name: Create Github Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create ${{ steps.changelog.outputs.tag }} --notes-file CHANGELOG.md
