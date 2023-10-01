@@ -3,6 +3,8 @@
 A Salesforce CLI plugin to use fzf's custom fuzzy completion.
 https://github.com/junegunn/fzf/#custom-fuzzy-completion
 
+[fuzzy-completion-demo.webm](https://github.com/cristiand391/sf-plugin-fzf-cmp/assets/6853656/a937d23b-4e63-41a0-8c2e-5676b8085b91)
+
 ## Required dependencies
  * `fzf` and fuzzy completion for your shell installed.
  * `jq` (used for command completion)
@@ -24,7 +26,7 @@ Then run `sf fzf-cmp` and follow the instructions to source the completion funct
 The following completion scenarios are supported:
 
 ### Commands
-`sf`, `sf help`and `sf which` support command completion:
+`sf`, `sf help`and `sf which` support command completion.
 
 ### Org usernames:
 `--target-org | -o`: org username completion
