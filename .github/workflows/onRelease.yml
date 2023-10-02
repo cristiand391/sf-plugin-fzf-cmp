@@ -16,6 +16,7 @@ jobs:
         uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d
         with:
           node-version: lts/*
+          registry-url: 'https://registry.npmjs.org'
           cache: yarn
       - name: Install dependencies
         run: yarn install --network-timeout 600000
@@ -26,4 +27,4 @@ jobs:
       - name: Publish to npm
         run: npm publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
