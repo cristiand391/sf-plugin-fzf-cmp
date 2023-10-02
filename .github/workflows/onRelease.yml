@@ -25,6 +25,6 @@ jobs:
       - name: Install oclif CLI (used in post|pre pack scripts)
         run: npm install --global oclif@^3
       - name: Publish to npm
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
