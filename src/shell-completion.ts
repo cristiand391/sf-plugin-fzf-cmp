@@ -1,4 +1,8 @@
 import type { AuthFields } from '@salesforce/core';
+import { promisify } from 'node:util';
+import { exec as nodeExec } from 'node:child_process';
+
+const exec = promisify(nodeExec);
 
 const args = process.argv[2].split(' ');
 
@@ -79,6 +83,10 @@ async function completeCommand(
     (wordToComplete == '-o' || wordToComplete == '--target-org')
   ) {
     output = await getOrgs('scratch');
+  } else if (/^sf plugins inspect/.test(process.argv[2])) {
+    output = (await exec('sf __fzf_complete all-plugins')).stdout;
+  } else if (/^sf plugins (uninstall|unlink|remove)/.test(process.argv[2])) {
+    output = (await exec('sf __fzf_complete user-plugins')).stdout;
   }
 
   return output;
