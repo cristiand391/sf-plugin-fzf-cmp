@@ -66,7 +66,11 @@ _fzf_complete_sf_post() {
   }`;
   await writeFile(
     fzfFuncFile,
-    format(fzfCompleteFuncTpl, commandsFile, normalize(`${__filename}/../../lib/shell-completion.js`)),
+    format(
+      fzfCompleteFuncTpl,
+      commandsFile,
+      normalize(`${__filename}/../../lib/shell-completion.js`),
+    ),
   );
 
   return fzfFuncFile;

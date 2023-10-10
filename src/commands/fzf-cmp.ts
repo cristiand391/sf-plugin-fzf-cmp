@@ -28,9 +28,7 @@ export default class FzfCmp extends Command {
 ${chalk.cyan(`source "${fzfFuncFile}"`)}
 
 2) Test it out, e.g.:
-${chalk.cyan(
-  `$ sf ${process.env.FZF_COMPLETION_TRIGGER || '**'}<TAB>`,
-)}
+${chalk.cyan(`$ sf ${process.env.FZF_COMPLETION_TRIGGER || '**'}<TAB>`)}
 
 Enjoy!
 `,
