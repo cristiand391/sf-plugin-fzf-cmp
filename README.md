@@ -51,5 +51,7 @@ If trying to set, get or unset `target-org` or `target-dev-hub` it will suggest 
 ### Metadata component names:
 `sf project deploy (start|validate) (--metadata | -m)`: metadata component names in "type:name" format in your current project.
 
+### Plugin names:
+`sf plugins (inspect|uninstall)`: suggest all plugins (except `uninstall`, which will only get user plugins (installed or linked).
 
 
