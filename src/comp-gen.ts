@@ -1,8 +1,15 @@
 import { Interfaces } from '@oclif/core';
-import { writeFile, mkdir } from 'node:fs/promises';
+import {
+  writeFile,
+  mkdir,
+  readdir,
+  realpath,
+  constants,
+  access,
+} from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { format } from 'node:util';
-import { normalize } from 'node:path';
+import { normalize, join } from 'node:path';
 
 export async function genCompletion(
   config: Interfaces.Config,
@@ -35,6 +42,38 @@ export async function genCompletion(
 
   await writeFile(commandsFile, JSON.stringify(commands));
 
+  const isExecutable = async (filepath: string): Promise<boolean> => {
+    try {
+      if (filepath.endsWith('node')) {
+        // This checks if the filepath is executable on Mac or Linux, if it is not it errors.
+        await access(filepath, constants.X_OK);
+        return true;
+      }
+    } catch {
+      return false;
+    }
+    return false;
+  };
+
+  const getNodeBinPath = async (root: string): Promise<string | undefined> => {
+    const binDirs = [join(root, 'bin'), join(root, 'client', 'bin')].filter(
+      (p) => existsSync(p),
+    );
+
+    if (binDirs.length > 0) {
+      for (const dir of binDirs) {
+        const nodeExecutable = (await readdir(dir))
+          .map((bin) => `${dir}/${bin}`)
+          .filter(isExecutable)[0];
+        if (nodeExecutable.length > 0) {
+          return realpath(nodeExecutable);
+        }
+      }
+    }
+  };
+
+  const nodeBin = config.binPath ? await getNodeBinPath(config.root) : 'node';
+
   const fzfCompleteFuncTpl = `_fzf_complete_sf() {
   if [[ "$@" == "sf " || "$@" == "sf which " || "$@" == "sf help " ]]; then
     local commands_file preview_command
@@ -46,7 +85,7 @@ export async function genCompletion(
       jq -r '.[] | .id' $commands_file
     )
   else
-    local comp=$(node %s "$@")
+    local comp=$(%s %s "$@")
     _fzf_complete --select-1 --ansi --prompt="sf> " -- "$@" < <(
       echo $comp
     )
@@ -69,6 +108,7 @@ _fzf_complete_sf_post() {
     format(
       fzfCompleteFuncTpl,
       commandsFile,
+      nodeBin,
       normalize(`${__filename}/../../lib/shell-completion.js`),
     ),
   );
