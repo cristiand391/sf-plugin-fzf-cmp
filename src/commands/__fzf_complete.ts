@@ -14,14 +14,14 @@ export default class __FzfComplete extends Command {
 
     switch (args.comp) {
       case 'all-plugins':
-        for (const plugin of this.config.plugins) {
-          output += `${plugin.name}\t(${plugin.type})\n`;
+        for (const [name, plugin] of this.config.plugins) {
+          output += `${name}\t(${plugin.type})\n`;
         }
         break;
       case 'user-plugins':
-        for (const plugin of this.config.plugins) {
+        for (const [name, plugin] of this.config.plugins) {
           if (plugin.type !== 'core') {
-            output += `${plugin.name}\t(${plugin.type})\n`;
+            output += `${name}\t(${plugin.type})\n`;
           }
         }
         break;
