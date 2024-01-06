@@ -20,23 +20,46 @@ export async function genCompletion(
     await mkdir(fzfCompDir, { recursive: true });
   }
 
-  const commands = config.commands
-    .filter((cmd) => !cmd.hidden)
-    .map((cmd) => ({
-      id: cmd.id.replace(/:/g, ' '),
-      summary: cmd.summary,
-    }))
-    .sort((a, b) => {
-      if (a.id < b.id) {
-        return -1;
-      }
+  type CommandCompletion = {
+    id: string;
+    summary?: string;
+  };
 
-      if (a.id > b.id) {
-        return 1;
-      }
+  const commands: CommandCompletion[] = [];
 
-      return 0;
+  config.plugins.forEach((p) => {
+    p.commands.forEach((c) => {
+      if (c.hidden) return;
+      const summary = c.summary;
+
+      commands.push({
+        id: c.id.replace(/:/g, ' '),
+        summary,
+      });
+
+      if (!c.deprecateAliases) {
+        c.aliases.forEach((a) => {
+          commands.push({
+            id: a.replace(/:/g, ' '),
+            summary,
+          });
+        });
+      }
     });
+  });
+
+  // sort alphabetically
+  commands.sort((a, b) => {
+    if (a.id < b.id) {
+      return -1;
+    }
+
+    if (a.id > b.id) {
+      return 1;
+    }
+
+    return 0;
+  });
 
   const commandsFile = `${fzfCompDir}/commands.json`;
 
