@@ -12,7 +12,7 @@ async function getOrgs(
   type: 'all' | 'scratch' | 'devhub' | 'sandbox',
 ): Promise<string> {
   const { StateAggregator } = await import(
-    '@salesforce/core/lib/stateAggregator'
+    '@salesforce/core/lib/stateAggregator/stateAggregator'
   );
   const stateAgg = await StateAggregator.getInstance();
 
