@@ -104,7 +104,7 @@ export async function genCompletion(
     commands_file="%s"
     preview_command="jq --arg cmd {} -r '. as \\$commands | map(.id == \\$cmd) | index(true) | \\$commands[.].summary' $commands_file"
 
-    _fzf_complete --reverse --preview "$preview_command" --preview-window wrap,down,1 --prompt="sf> " -- "$@" < <(
+    _fzf_complete --select-1 --reverse --preview "$preview_command" --preview-window wrap,down,1 --prompt="sf> " -- "$@" < <(
       jq -r '.[] | .id' $commands_file
     )
   else
