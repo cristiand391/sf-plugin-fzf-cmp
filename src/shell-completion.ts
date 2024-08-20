@@ -12,7 +12,7 @@ async function getOrgs(
   type: 'all' | 'scratch' | 'devhub' | 'sandbox',
 ): Promise<string> {
   const { StateAggregator } = await import(
-    '@salesforce/core/lib/stateAggregator/stateAggregator'
+    '@salesforce/core/stateAggregator'
   );
   const stateAgg = await StateAggregator.getInstance();
 
@@ -40,7 +40,7 @@ async function getOrgs(
 }
 
 async function getMetadataComponents(): Promise<string | undefined> {
-  const { SfProject } = await import('@salesforce/core/lib/sfProject');
+  const { SfProject } = await import('@salesforce/core/project');
   try {
     await SfProject.resolve();
   } catch {

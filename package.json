@@ -15,14 +15,12 @@
     "/oclif.manifest.json"
   ],
   "dependencies": {
-    "@oclif/core": "^3.16.0",
-    "@salesforce/core": "^6.4.4",
-    "@salesforce/source-deploy-retrieve": "^10.2.6",
-    "chalk": "^4.1.2"
+    "@oclif/core": "^4.0.17",
+    "@salesforce/core": "^8.4.0",
+    "@salesforce/source-deploy-retrieve": "^12.5.0",
+    "ansis": "^3.3.2"
   },
   "devDependencies": {
-    "@types/cli-progress": "^3.11.5",
-    "@types/node": "^20.6.4",
     "@typescript-eslint/eslint-plugin": "^6.18.0",
     "@typescript-eslint/parser": "^6.18.0",
     "eslint": "^8.56.0",
