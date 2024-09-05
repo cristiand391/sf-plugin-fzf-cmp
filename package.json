@@ -29,7 +29,11 @@
     "typescript": "^5.3.3"
   },
   "oclif": {
-    "commands": "./lib/commands"
+    "commands": "./lib/commands",
+    "hooks": {
+      "plugins:postinstall": "./lib/hooks/refresh-cache.js",
+      "plugins:postuninstall": "./lib/hooks/refresh-cache.js"
+    }
   },
   "prettier": {
     "singleQuote": true
