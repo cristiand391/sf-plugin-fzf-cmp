@@ -1,3 +1,13 @@
+# [0.3.0](https://github.com/cristiand391/sf-plugin-fzf-cmp/compare/0.2.0...0.3.0) (2024-10-18)
+
+
+### Features
+
+* add `refresh-cache` hook ([#7](https://github.com/cristiand391/sf-plugin-fzf-cmp/issues/7)) ([55e9aab](https://github.com/cristiand391/sf-plugin-fzf-cmp/commit/55e9aabcb86fb0001e2de5b5b2a718014986cc6a))
+* **cmd:** automatically select the only match ([#4](https://github.com/cristiand391/sf-plugin-fzf-cmp/issues/4)) ([fcd73f0](https://github.com/cristiand391/sf-plugin-fzf-cmp/commit/fcd73f00109eb78c35821cc120f1a3aef7fa3114))
+
+
+
 # [0.2.0](https://github.com/cristiand391/sf-plugin-fzf-cmp/compare/0.1.0...0.2.0) (2024-01-29)
 
 
