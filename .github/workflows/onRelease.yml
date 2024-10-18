@@ -3,7 +3,7 @@ name: publish
 on:
   workflow_dispatch:
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   npm-publish:
@@ -17,13 +17,11 @@ jobs:
         with:
           node-version: lts/*
           registry-url: 'https://registry.npmjs.org'
-          cache: yarn
+          cache: npm
       - name: Install dependencies
-        run: yarn install --network-timeout 600000
+        run: npm install
       - name: Build
-        run: yarn build
-      - name: Install oclif CLI (used in post|pre pack scripts)
-        run: npm install --global oclif@^3
+        run: npm run build
       - name: Publish to npm
         run: npm publish --access public
         env:

@@ -43,7 +43,7 @@
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write \"+(src)/**/*.+(ts|json)\"",
     "postpack": "rm -f oclif.manifest.json",
-    "prepack": "yarn build && oclif manifest"
+    "prepack": "npm run build && oclif manifest"
   },
   "engines": {
     "node": ">=18"
