@@ -1,3 +1,17 @@
+# [1.0.0](https://github.com/cristiand391/sf-plugin-fzf-cmp/compare/0.3.1...1.0.0) (2025-10-26)
+
+
+### Bug Fixes
+
+* trigger major release ([d8a28d3](https://github.com/cristiand391/sf-plugin-fzf-cmp/commit/d8a28d34349f794f777f05cb518cd621cea5be60))
+
+
+### BREAKING CHANGES
+
+* prev commit drops node v18 so we need a major rel
+
+
+
 ## [0.3.1](https://github.com/cristiand391/sf-plugin-fzf-cmp/compare/0.3.0...0.3.1) (2025-10-26)
 
 
@@ -28,10 +42,6 @@
 
 * support installer/tarballs ([#2](https://github.com/cristiand391/sf-plugin-fzf-cmp/issues/2)) ([f2bf02d](https://github.com/cristiand391/sf-plugin-fzf-cmp/commit/f2bf02df81ea6ca4a26546a47d571df347f69e56))
 * support plugin name completion ([#1](https://github.com/cristiand391/sf-plugin-fzf-cmp/issues/1)) ([bfc2f34](https://github.com/cristiand391/sf-plugin-fzf-cmp/commit/bfc2f340426c8764e29be485016467371f093dae))
-
-
-
-## 0.0.1 (2023-10-01)
 
 
 

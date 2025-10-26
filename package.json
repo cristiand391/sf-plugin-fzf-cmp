@@ -1,6 +1,6 @@
 {
   "name": "@cristiand391/sf-plugin-fzf-cmp",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "Fuzzy completion for the Salesforce CLI",
   "author": {
     "name": "Cristian Dominguez",
