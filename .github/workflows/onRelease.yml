@@ -18,6 +18,8 @@ jobs:
           node-version: lts/*
           registry-url: 'https://registry.npmjs.org'
           cache: npm
+      - name: Install oclif CLI
+        run: npm install -g oclif@^4
       - name: Install dependencies
         run: npm install
       - name: Build
