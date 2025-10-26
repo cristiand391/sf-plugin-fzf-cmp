@@ -3,12 +3,12 @@
 
 ### Bug Fixes
 
-* trigger major release ([d8a28d3](https://github.com/cristiand391/sf-plugin-fzf-cmp/commit/d8a28d34349f794f777f05cb518cd621cea5be60))
-
+* fix: improve node bin finder for installers ([#8](https://github.com/cristiand391/sf-plugin-fzf-cmp/issues/8)) https://github.com/cristiand391/sf-plugin-fzf-cmp/pull/9
 
 ### BREAKING CHANGES
 
-* prev commit drops node v18 so we need a major rel
+* drops support for node v18
+* migrate to ESM
 
 
 
