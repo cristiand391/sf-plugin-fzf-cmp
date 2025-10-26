@@ -15,18 +15,18 @@
     "/oclif.manifest.json"
   ],
   "dependencies": {
-    "@oclif/core": "^4.0.17",
-    "@salesforce/core": "^8.4.0",
-    "@salesforce/source-deploy-retrieve": "^12.5.0",
-    "ansis": "^3.3.2"
+    "@oclif/core": "^4.7.2",
+    "@salesforce/core": "^8.23.3",
+    "@salesforce/source-deploy-retrieve": "^12.25.0"
   },
   "devDependencies": {
+    "@types/node": "^20.19.23",
     "@typescript-eslint/eslint-plugin": "^6.18.0",
     "@typescript-eslint/parser": "^6.18.0",
     "eslint": "^8.56.0",
     "prettier": "^3.1.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.9.3"
   },
   "oclif": {
     "commands": "./lib/commands",
@@ -46,7 +46,7 @@
     "prepack": "npm run build && oclif manifest"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "bugs": "https://github.com/cristiand391/sf-plugin-fzf-cmp/issues",
   "keywords": [
