@@ -1,6 +1,6 @@
 import { Command, Flags } from '@oclif/core';
-import { genCompletion } from '../comp-gen';
-import ansis from 'ansis'
+import { genCompletion } from '../comp-gen.js';
+import { styleText } from 'node:util';
 
 export default class FzfCmp extends Command {
   static summary = 'Fuzzy completion';
@@ -19,16 +19,16 @@ export default class FzfCmp extends Command {
 
     if (!flags['refresh-cache']) {
       this.log(
-        `${ansis.bold('Setup Instructions')}
+        `${styleText('bold', 'Setup Instructions')}
 
 1) Add this line to your \`${
           this.config.shell === 'zsh' ? '.zshrc' : '.bashrc'
         }\` file to load the fuzzy completion function for sf:
 
-${ansis.cyan(`source "${fzfFuncFile}"`)}
+${styleText('cyan', `source "${fzfFuncFile}"`)}
 
 2) Test it out, e.g.:
-${ansis.cyan(`$ sf ${process.env.FZF_COMPLETION_TRIGGER || '**'}<TAB>`)}
+${styleText('cyan', `$ sf ${process.env.FZF_COMPLETION_TRIGGER || '**'}<TAB>`)}
 
 Enjoy!
 `,

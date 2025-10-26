@@ -11,9 +11,7 @@ const wordToComplete = args.at(-2);
 async function getOrgs(
   type: 'all' | 'scratch' | 'devhub' | 'sandbox',
 ): Promise<string> {
-  const { StateAggregator } = await import(
-    '@salesforce/core/stateAggregator'
-  );
+  const { StateAggregator } = await import('@salesforce/core/stateAggregator');
   const stateAgg = await StateAggregator.getInstance();
 
   let output = '';
@@ -47,7 +45,7 @@ async function getMetadataComponents(): Promise<string | undefined> {
     return;
   }
   const { MetadataResolver } = await import(
-    '@salesforce/source-deploy-retrieve/lib/src/resolve'
+    '@salesforce/source-deploy-retrieve/lib/src/resolve/index.js'
   );
   const componets = new MetadataResolver().getComponentsFromPath(process.cwd());
   let output = '';

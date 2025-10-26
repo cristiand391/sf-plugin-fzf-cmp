@@ -2,7 +2,6 @@ import { Interfaces } from '@oclif/core';
 import {
   writeFile,
   mkdir,
-  readdir,
   realpath,
   constants,
   access,
@@ -85,9 +84,15 @@ export async function genCompletion(
 
     if (binDirs.length > 0) {
       for (const dir of binDirs) {
-        const nodeExecutable = (await readdir(dir))
-          .map((bin) => `${dir}/${bin}`)
-          .filter(isExecutable)[0];
+        const nodePath = `${dir}/node`;
+        const nodeExecutable = (await isExecutable(nodePath))
+          ? nodePath
+          : undefined;
+        if (!nodeExecutable) {
+          throw new Error(
+            `Unable to find the node executable in: \n${binDirs.join(`\n`)}`,
+          );
+        }
         if (nodeExecutable.length > 0) {
           return realpath(nodeExecutable);
         }
@@ -132,7 +137,7 @@ _fzf_complete_sf_post() {
       fzfCompleteFuncTpl,
       commandsFile,
       nodeBin,
-      normalize(`${__filename}/../../lib/shell-completion.js`),
+      normalize(`${import.meta.filename}/../../lib/shell-completion.js`),
     ),
   );
 
