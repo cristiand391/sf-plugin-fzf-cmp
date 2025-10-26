@@ -137,7 +137,7 @@ _fzf_complete_sf_post() {
       fzfCompleteFuncTpl,
       commandsFile,
       nodeBin,
-      normalize(`${__filename}/../../lib/shell-completion.js`),
+      normalize(`${import.meta.filename}/../../lib/shell-completion.js`),
     ),
   );
 

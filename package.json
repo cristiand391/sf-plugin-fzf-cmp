@@ -9,6 +9,7 @@
   "homepage": "https://github.com/cristiand391/sf-plugin-fzf-cmp",
   "license": "MIT",
   "main": "lib/index.js",
+  "type": "module",
   "repository": "cristiand391/sf-plugin-fzf-cmp",
   "files": [
     "/lib",

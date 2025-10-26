@@ -1,5 +1,5 @@
 import { Command, Flags } from '@oclif/core';
-import { genCompletion } from '../comp-gen';
+import { genCompletion } from '../comp-gen.js';
 import { styleText } from 'node:util';
 
 export default class FzfCmp extends Command {
@@ -14,6 +14,7 @@ export default class FzfCmp extends Command {
 
   async run(): Promise<void> {
     const { flags } = await this.parse(FzfCmp);
+    console.log('hey from ESM');
 
     const fzfFuncFile = await genCompletion(this.config);
 

@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
     "strict": true,
-    "lib": ["ES2022"],
+    "lib": ["ES2023"],
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "outDir": "lib",
     "rootDir": "src",
-    "target": "ES2022"
+    "target": "ES2023"
+  },
+  "ts-node": {
+    "esm": true
   },
   "include": [
     "src/**/*"
