@@ -14,7 +14,6 @@ export default class FzfCmp extends Command {
 
   async run(): Promise<void> {
     const { flags } = await this.parse(FzfCmp);
-    console.log('hey from ESM');
 
     const fzfFuncFile = await genCompletion(this.config);
 
