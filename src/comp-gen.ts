@@ -89,7 +89,9 @@ export async function genCompletion(
           ? nodePath
           : undefined;
         if (!nodeExecutable) {
-          throw new Error(`Unable to find the node executable in: \n${binDirs.join(`\n`)}`);
+          throw new Error(
+            `Unable to find the node executable in: \n${binDirs.join(`\n`)}`,
+          );
         }
         if (nodeExecutable.length > 0) {
           return realpath(nodeExecutable);
